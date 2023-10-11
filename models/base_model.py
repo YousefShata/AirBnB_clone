@@ -23,7 +23,7 @@ class BaseModel:
         """
         Representing the object
         """
-        return "[{}] ({}) {}".format(self.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
         """
@@ -36,7 +36,7 @@ class BaseModel:
         returns a dictionary containing all keys/values
         """
         dic = self.__dict__
-        dic["__class__"] = self.__name__
+        dic["__class__"] = type(self).__name__
         dic["created_at"] = self.created_at.isoformat()
         dic["updated_at"] = self.updated_at.isoformat()
 
