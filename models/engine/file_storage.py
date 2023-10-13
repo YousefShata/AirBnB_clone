@@ -4,6 +4,7 @@ File storage model for serialize and deserialize JSON files
 """
 import json
 from os import path
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -31,14 +32,23 @@ class FileStorage:
         """
         serialize to json
         """
+        serialized_objects = {}
+        for key, value in FileStorage.__objects.items():
+            serialized_objects[key] = value.to_dict()
+        json_str = json.dumps(serialized_objects)
         with open(FileStorage.__file_path, "w") as Myfile:
-            Myfile.write(json.dumps(FileStorage.__objects))
+            Myfile.write(json_str)
 
     def reload(self):
         """
         Deserialize from json
         """
+        print(FileStorage.__objects)
         if (path.isfile(FileStorage.__file_path)):
             with open(FileStorage.__file_path, "r") as Myfile:
-                data = Myfile.read()
-                FileStorage.__objects = json.loads(data)
+                json_string = Myfile.read()
+                data = json.loads(json_string)
+            for key, value in data.items():
+                class_name = value['__class__']
+                obj = eval(class_name)(**value)
+                FileStorage.__objects[key] = obj
