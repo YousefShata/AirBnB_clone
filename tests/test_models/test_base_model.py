@@ -32,6 +32,13 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertEqual(v_uuid.version, 4)
     
+    def test_str(self):
+        """Testing __str__ method"""
+        self.new_odj.id = "12"
+        strForm = self.new_odj.__str__()
+        expected = "[BaseModel] (12)"
+        self.assertIn(expected, strForm)
+    
     def test_different_uuid(self):
         """
         checks id UUID are different when different objects are created.
