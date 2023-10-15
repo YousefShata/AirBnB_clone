@@ -40,7 +40,6 @@ class TestBaseModel(unittest.TestCase):
         expected = "[BaseModel] (12)"
         self.assertIn(expected, strForm)
 
-
     def test_different_uuid(self):
         """
         checks id UUID are different when different objects are created.
