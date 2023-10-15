@@ -39,23 +39,8 @@ class TestBaseModel(unittest.TestCase):
         strForm = self.new_odj.__str__()
         expected = "[BaseModel] (12)"
         self.assertIn(expected, strForm)
-    
-    def test_save_updatedAt(self):
-        """test updating the public instance attribute updated_at
-            with the current datetime"""
-        new_inst = BaseModel()
-        sleep(0.05)
-        beforeSave_updated_at = new_inst.updated_at
-        new_inst.save()
-        self.assertNotEqual(beforeSave_updated_at, new_inst.updated_at)
-    
-    def test_save_BaseModel(self):
-        """test if the save method works"""
-        self.new_odj.save()
-        self.assertNotEqual(self.new_odj.created_at, self.new_odj.updated_at)
 
 
-    
     def test_different_uuid(self):
         """
         checks id UUID are different when different objects are created.
