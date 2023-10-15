@@ -125,12 +125,12 @@ class HBNBCommand(cmd.Cmd):
                     all_values = models.storage.all()
                     search_string = f"{name}.{id}"
                     if search_string in all_values:
-                        if len(arg) > 2:
-                            if len(arg) > 3:
-                                if (args[3] not in
-                                        ["created_at", "updated_at", "id"]):
-                                    setattr(all_values[search_string], str(
-                                        args[2]), str(args[3]))
+                        if len(args) > 2:
+                            attr = args[2]
+                            if len(args) > 3:
+                                val = args[3]
+                                setattr(all_values[search_string], str(
+                                    attr), str(val))
                             else:
                                 print("** value missing **")
                         else:
