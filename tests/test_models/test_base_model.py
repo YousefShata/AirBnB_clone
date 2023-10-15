@@ -15,12 +15,23 @@ class TestBaseModel(unittest.TestCase):
         """This method is called before each test method in the test class.
         """
         self.new_odj = BaseModel()
+        self.new2_odj = BaseModel()
     
     def test_base_model_uuid_good_format(self):
         """
         Tests if UUID is in the correct format.
         """
         self.assertIsInstance(uuid.UUID(self.new_odj.id), uuid.UUID)
+    
+    def test_base_model_different_uuid(self):
+        """
+        checks id UUID are different when different objects are created.
+        """
+
+        uuid_one = uuid.UUID(self.new_odj.id)
+        uuid_two = uuid.UUID(self.new2_odj.id)
+
+        self.assertNotEqual(uuid_one, uuid_two)
 
     def test_init(self):
         """ test instantiation type"""
