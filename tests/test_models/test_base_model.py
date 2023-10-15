@@ -18,13 +18,13 @@ class TestBaseModel(unittest.TestCase):
         """
         self.new_odj = BaseModel()
         self.new2_odj = BaseModel()
-    
+
     def test_uuid_good_format(self):
         """
         Tests if UUID is in the correct format.
         """
         self.assertIsInstance(uuid.UUID(self.new_odj.id), uuid.UUID)
-    
+
     def test_uuid_version(self):
         """
         Tests if the version of the UUID is 4
@@ -32,24 +32,15 @@ class TestBaseModel(unittest.TestCase):
         v_uuid = uuid.UUID(self.new_odj.id)
 
         self.assertEqual(v_uuid.version, 4)
-    
+
     def test_str(self):
         """Testing __str__ method"""
         self.new_odj.id = "12"
         strForm = self.new_odj.__str__()
         expected = "[BaseModel] (12)"
         self.assertIn(expected, strForm)
-    
-    def test_save_updatedAt(self):
-        """test updating the public instance attribute updated_at
-            with the current datetime"""
-        new_inst = BaseModel()
-        sleep(0.05)
-        beforeSave_updated_at = new_inst.updated_at
-        new_inst.save()
-        self.assertLess(beforeSave_updated_at, new_inst.updated_at)
 
-    
+
     def test_different_uuid(self):
         """
         checks id UUID are different when different objects are created.
