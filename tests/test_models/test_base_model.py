@@ -29,12 +29,12 @@ class TestBaseModel(unittest.TestCase):
         """ test with arg"""
         with self.assertRaises(TypeError):
             self.new_odj.save(304)
-    
+
     def test_to_dict(self):
         """test to_dict method"""
         self.new_odj.name = "bnb"
         self.new_odj.num = 10
-        
+
         new_dic = self.new_odj.to_dict()
         self.assertEqual(type(new_dic['num']), int)
         self.assertEqual(type(new_dic['name']), str)
