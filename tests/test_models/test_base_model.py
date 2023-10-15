@@ -3,6 +3,7 @@
 """unittest for base model"""
 
 import unittest
+import uuid
 import datetime
 from models.base_model import BaseModel
 
@@ -14,6 +15,12 @@ class TestBaseModel(unittest.TestCase):
         """This method is called before each test method in the test class.
         """
         self.new_odj = BaseModel()
+    
+    def test_base_model_uuid_good_format(self):
+        """
+        Tests if UUID is in the correct format.
+        """
+        self.assertIsInstance(uuid.UUID(self.new_odj.id), uuid.UUID)
 
     def test_init(self):
         """ test instantiation type"""
@@ -46,24 +53,6 @@ class TestBaseModel(unittest.TestCase):
         """ test with arg"""
         with self.assertRaises(TypeError):
             self.new_odj.to_dict('str')
-
-    def init_with_invalid_dates(self):
-        """Test initialization with invalid date"""
-        invalid_dict = {
-            'id': '123',
-            'created_at': '2021-08-07T15:30:51.120690',
-            'updated_at': '2023-08-07T15:30:51.120690',
-            'name': 'julien',
-            'my_number': 42
-        }
-
-        invalid_dict['created_at'] = "INVALID DATE"
-        with self.assertRaises(ValueError):
-            inst = BaseModel(**invalid_dict)
-
-        invalid_dict['updated_at'] = 2023
-        with self.assertRaises(TypeError):
-            inst = BaseModel(**invalid_dict)
 
 
 if __name__ == '__main__':
