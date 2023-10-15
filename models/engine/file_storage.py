@@ -5,6 +5,7 @@ File storage model for serialize and deserialize JSON files
 import json
 from os import path
 from models.base_model import BaseModel
+from models.user import User
 
 
 class FileStorage:
@@ -43,11 +44,13 @@ class FileStorage:
         """
         Deserialize from json
         """
+        all_classes = ["BaseModel", "User"]
         if (path.isfile(FileStorage.__file_path)):
             with open(FileStorage.__file_path, "r") as Myfile:
                 json_string = Myfile.read()
                 data = json.loads(json_string)
             for key, value in data.items():
                 class_name = value['__class__']
-                obj = eval(class_name)(**value)
-                FileStorage.__objects[key] = obj
+                if class_name in all_classes:
+                    obj = eval(class_name)(**value)
+                    FileStorage.__objects[key] = obj

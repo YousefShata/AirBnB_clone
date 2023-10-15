@@ -5,6 +5,7 @@ Command interpreter to control models
 import cmd
 from models.base_model import BaseModel
 import models
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -40,6 +41,10 @@ class HBNBCommand(cmd.Cmd):
                 mod = BaseModel()
                 mod.save()
                 print(mod.id)
+            elif (obj == "User"):
+                mod = User()
+                mod.save()
+                print(mod.id)
             else:
                 print("** class doesn't exist **")
         else:
@@ -52,7 +57,8 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) > 0:
             args = arg.split()
             name = args[0]
-            if (name == "BaseModel"):
+            all_classes = ["BaseModel", "User"]
+            if name in all_classes:
                 if len(args) > 1:
                     id = args[1]
                     all_values = models.storage.all()
@@ -75,7 +81,8 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) > 0:
             args = arg.split()
             name = args[0]
-            if (name == "BaseModel"):
+            all_classes = ["BaseModel", "User"]
+            if name in all_classes:
                 if len(args) > 1:
                     id = args[1]
                     all_values = models.storage.all()
@@ -99,10 +106,11 @@ class HBNBCommand(cmd.Cmd):
         final_list = []
         all_values = models.storage.all()
         if len(arg) > 0:
-            if (arg == "BaseModel"):
+            all_classes = ["BaseModel", "User"]
+            if arg in all_classes:
                 final_dic = {}
                 for key, value in all_values.items():
-                    if key.startswith("BaseModel."):
+                    if key.startswith(f"{arg}."):
                         final_list.append(str(value))
                 print(final_list)
             else:
@@ -119,7 +127,8 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) > 0:
             args = arg.split()
             name = args[0]
-            if (name == "BaseModel"):
+            all_classes = ["BaseModel", "User"]
+            if name in all_classes:
                 if len(args) > 1:
                     id = args[1]
                     all_values = models.storage.all()
