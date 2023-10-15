@@ -7,6 +7,7 @@ import os
 import uuid
 import datetime
 from models.base_model import BaseModel
+from time import sleep
 
 
 class TestBaseModel(unittest.TestCase):
