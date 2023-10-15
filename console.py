@@ -124,8 +124,10 @@ class HBNBCommand(cmd.Cmd):
                     if search_string in all_values:
                         if len(arg) > 2:
                             if len(arg) > 3:
-                                setattr(all_values[search_string], str(
-                                    args[2]), str(arggs[3]))
+                                if (args_array[3] not in
+                                        ["created_at", "updated_at", "id"]):
+                                    setattr(all_values[search_string], str(
+                                        args[2]), str(arggs[3]))
                             else:
                                 print("** value missing **")
                         else:
