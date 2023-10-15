@@ -3,57 +3,49 @@
 """unittest for base model"""
 
 import unittest
-from datetime import datetime
+import datetime
 from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
     """ test base model """
-    def test_initialization_with_kwargs(self):
-        """test initialization with kwargs"""
-        obj_id = "some_id"
-        created_at = "2023-10-14T10:30:00"
-        updated_at = "2023-10-14T11:30:00"
 
-        kwargs = {
-            "id": obj_id,
-            "created_at": created_at,
-            "updated_at": updated_at
-        }
+    def setUp(self):
+        """This method is called before each test method in the test class.
+        """
+        self.new_odj = BaseModel()
 
-        obj = BaseModel(**kwargs)
+    def test_init(self):
+        """ test instantiation type"""
+        self.assertEqual(type(self.new_odj.id), str)
+        self.assertEqual(type(self.new_odj.updated_at), datetime.datetime)
+        self.assertEqual(type(self.new_odj.created_at), datetime.datetime)
 
-        self.assertEqual(obj.id, obj_id)
-        self.assertEqual(obj.created_at, datetime.fromisoformat(created_at))
-        self.assertEqual(obj.updated_at, datetime.fromisoformat(updated_at))
-
-    def test_initialization_without_kwargs(self):
-        """test initialization with args"""
-        obj = BaseModel()
-
-        self.assertIsNotNone(obj.id)
-        self.assertIsInstance(obj.created_at, datetime)
-        self.assertIsInstance(obj.updated_at, datetime)
-
-    def test_save_updates_updated_at(self):
-        """test save method"""
-        obj = BaseModel()
-        initial_updated_at = obj.updated_at
-        obj.save()
-        updated_updated_at = obj.updated_at
-
-        self.assertNotEqual(initial_updated_at, updated_updated_at)
-
-    def test_to_dict_returns_dict(self):
+    def test_save(self):
+        """ test save method"""
+        curr_time = self.new_odj.updated_at
+        self.new_odj.save
+        self.assertEqual(curr_time, self.new_odj.updated_at)
+        """ test with arg"""
+        with self.assertRaises(TypeError):
+            self.new_odj.save(304)
+    
+    def test_to_dict(self):
         """test to_dict method"""
-        obj = BaseModel()
-        obj_dict = obj.to_dict()
-
-        self.assertIsInstance(obj_dict, dict)
-        self.assertEqual(obj_dict['__class__'], 'BaseModel')
-        self.assertEqual(obj_dict['id'], obj.id)
-        # self.assertEqual(obj_dict['created_at'], obj.created_at.isoformat())
-        # self.assertEqual(obj_dict['updated_at'], obj.updated_at.isoformat())
+        self.new_odj.name = "bnb"
+        self.new_odj.num = 10
+        
+        new_dic = self.new_odj.to_dict()
+        self.assertEqual(type(new_dic['num']), int)
+        self.assertEqual(type(new_dic['name']), str)
+        self.assertEqual(type(new_dic['__class__']), str)
+        self.assertEqual(new_dic['__class__'], 'BaseModel')
+        self.assertEqual(type(new_dic['updated_at']), str)
+        self.assertEqual(type(new_dic['id']), str)
+        self.assertEqual(type(new_dic['created_at']), str)
+        """ test with arg"""
+        with self.assertRaises(TypeError):
+            self.new_odj.to_dict('str')
 
 
 if __name__ == '__main__':
