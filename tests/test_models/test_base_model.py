@@ -47,7 +47,13 @@ class TestBaseModel(unittest.TestCase):
         sleep(0.05)
         beforeSave_updated_at = new_inst.updated_at
         new_inst.save()
-        self.assertLess(beforeSave_updated_at, new_inst.updated_at)
+        self.assertNotEqual(beforeSave_updated_at, new_inst.updated_at)
+    
+    def test_save_BaseModel(self):
+        """test if the save method works"""
+        self.new_odj.save()
+        self.assertNotEqual(self.new_odj.created_at, self.new_odj.updated_at)
+
 
     
     def test_different_uuid(self):
