@@ -96,18 +96,21 @@ class HBNBCommand(cmd.Cmd):
         """
         Show all instences
         """
+        final_list = []
         all_values = models.storage.all()
         if len(arg) > 0:
             if (arg == "BaseModel"):
                 final_dic = {}
                 for key, value in all_values.items():
                     if key.startswith("BaseModel."):
-                        final_dic[key] = value
-                print(final_dic)
+                        final_list.append(str(value))
+                print(final_list)
             else:
                 print("** class doesn't exist **")
         else:
-            print(all_values)
+            for key, value in all_values.items():
+                final_list.append(str(value))
+            print(final_list)
 
     def do_update(self, arg):
         """
