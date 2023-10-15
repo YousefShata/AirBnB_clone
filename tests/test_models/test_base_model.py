@@ -3,6 +3,7 @@
 """unittest for base model"""
 
 import unittest
+import os
 import uuid
 import datetime
 from models.base_model import BaseModel
@@ -22,6 +23,14 @@ class TestBaseModel(unittest.TestCase):
         Tests if UUID is in the correct format.
         """
         self.assertIsInstance(uuid.UUID(self.new_odj.id), uuid.UUID)
+    
+    def test_base_model_uuid_version(self):
+        """
+        Tests if the version of the UUID is 4
+        """
+        v_uuid = uuid.UUID(self.new_odj.id)
+
+        self.assertEqual(v_uuid.version, 4)
     
     def test_base_model_different_uuid(self):
         """
