@@ -47,6 +47,24 @@ class TestBaseModel(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_odj.to_dict('str')
 
+    def init_with_invalid_dates(self):
+        """Test initialization with invalid date"""
+        invalid_dict = {
+            'id': '123',
+            'created_at': '2021-08-07T15:30:51.120690',
+            'updated_at': '2023-08-07T15:30:51.120690',
+            'name': 'julien',
+            'my_number': 42
+        }
+
+        invalid_dict['created_at'] = "INVALID DATE"
+        with self.assertRaises(ValueError):
+            inst = BaseModel(**invalid_dict)
+
+        invalid_dict['updated_at'] = 2023
+        with self.assertRaises(TypeError):
+            inst = BaseModel(**invalid_dict)
+
 
 if __name__ == '__main__':
     unittest.main()
