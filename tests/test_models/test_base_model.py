@@ -7,6 +7,7 @@ import os
 import uuid
 import datetime
 from models.base_model import BaseModel
+from time import sleep
 
 
 class TestBaseModel(unittest.TestCase):
@@ -38,6 +39,16 @@ class TestBaseModel(unittest.TestCase):
         strForm = self.new_odj.__str__()
         expected = "[BaseModel] (12)"
         self.assertIn(expected, strForm)
+    
+    def test_save_updatedAt(self):
+        """test updating the public instance attribute updated_at
+            with the current datetime"""
+        new_inst = BaseModel()
+        sleep(0.05)
+        beforeSave_updated_at = new_inst.updated_at
+        new_inst.save()
+        self.assertLess(beforeSave_updated_at, new_inst.updated_at)
+
     
     def test_different_uuid(self):
         """
