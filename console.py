@@ -37,9 +37,9 @@ class HBNBCommand(cmd.Cmd):
         """
         if obj:
             if (obj == "BaseModel"):
-                model = BaseModel()
-                model.save()
-                print(model.id)
+                mod = BaseModel()
+                mod.save()
+                print(mod.id)
             else:
                 print("** class doesn't exist **")
         else:
