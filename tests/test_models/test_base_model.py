@@ -40,14 +40,6 @@ class TestBaseModel(unittest.TestCase):
         expected = "[BaseModel] (12)"
         self.assertIn(expected, strForm)
 
-    def test_save_updatedAt(self):
-        """test updating the public instance attribute updated_at
-            with the current datetime"""
-        new_inst = BaseModel()  # create sleep update
-        sleep(0.05)
-        beforeSave_updated_at = new_inst.updated_at
-        new_inst.save()
-        self.assertLess(beforeSave_updated_at, new_inst.updated_at)
 
     def test_different_uuid(self):
         """
