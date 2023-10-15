@@ -18,13 +18,13 @@ class TestBaseModel(unittest.TestCase):
         self.new_odj = BaseModel()
         self.new2_odj = BaseModel()
     
-    def test_base_model_uuid_good_format(self):
+    def test_uuid_good_format(self):
         """
         Tests if UUID is in the correct format.
         """
         self.assertIsInstance(uuid.UUID(self.new_odj.id), uuid.UUID)
     
-    def test_base_model_uuid_version(self):
+    def test_uuid_version(self):
         """
         Tests if the version of the UUID is 4
         """
@@ -32,7 +32,7 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertEqual(v_uuid.version, 4)
     
-    def test_base_model_different_uuid(self):
+    def test_different_uuid(self):
         """
         checks id UUID are different when different objects are created.
         """
