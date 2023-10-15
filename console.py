@@ -6,6 +6,11 @@ import cmd
 from models.base_model import BaseModel
 import models
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -45,6 +50,26 @@ class HBNBCommand(cmd.Cmd):
                 mod = User()
                 mod.save()
                 print(mod.id)
+            elif (obj == "Place"):
+                mod = Place()
+                mod.save()
+                print(mod.id)
+            elif (obj == "State"):
+                mod = State()
+                mod.save()
+                print(mod.id)
+            elif (obj == "City"):
+                mod = City()
+                mod.save()
+                print(mod.id)
+            elif (obj == "Amenity"):
+                mod = Amenity()
+                mod.save()
+                print(mod.id)
+            elif (obj == "Review"):
+                mod = Review()
+                mod.save()
+                print(mod.id)
             else:
                 print("** class doesn't exist **")
         else:
@@ -57,7 +82,9 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) > 0:
             args = arg.split()
             name = args[0]
-            all_classes = ["BaseModel", "User"]
+            all_classes = [
+                "BaseModel", "User", "Place", "State",
+                "City", "Amenity", "Review"]
             if name in all_classes:
                 if len(args) > 1:
                     id = args[1]
@@ -81,7 +108,9 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) > 0:
             args = arg.split()
             name = args[0]
-            all_classes = ["BaseModel", "User"]
+            all_classes = [
+                "BaseModel", "User", "Place", "State",
+                "City", "Amenity", "Review"]
             if name in all_classes:
                 if len(args) > 1:
                     id = args[1]
@@ -106,7 +135,9 @@ class HBNBCommand(cmd.Cmd):
         final_list = []
         all_values = models.storage.all()
         if len(arg) > 0:
-            all_classes = ["BaseModel", "User"]
+            all_classes = [
+                "BaseModel", "User", "Place", "State",
+                "City", "Amenity", "Review"]
             if arg in all_classes:
                 final_dic = {}
                 for key, value in all_values.items():
@@ -127,7 +158,9 @@ class HBNBCommand(cmd.Cmd):
         if len(arg) > 0:
             args = arg.split()
             name = args[0]
-            all_classes = ["BaseModel", "User"]
+            all_classes = [
+                "BaseModel", "User", "Place", "State",
+                "City", "Amenity", "Review"]
             if name in all_classes:
                 if len(args) > 1:
                     id = args[1]
