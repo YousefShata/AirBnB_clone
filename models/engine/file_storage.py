@@ -43,7 +43,6 @@ class FileStorage:
         """
         Deserialize from json
         """
-        print(FileStorage.__objects)
         if (path.isfile(FileStorage.__file_path)):
             with open(FileStorage.__file_path, "r") as Myfile:
                 json_string = Myfile.read()
