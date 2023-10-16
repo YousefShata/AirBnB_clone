@@ -17,7 +17,6 @@ class TestAmenity(unittest.TestCase):
         """
         self.new_obj = Amenity()
 
-
     def test_init_amenity(self):
         """ test instantiation of class """
         self.assertEqual(type(self.new_obj.id), str)

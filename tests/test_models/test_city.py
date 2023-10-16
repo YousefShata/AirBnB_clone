@@ -15,7 +15,6 @@ class TestCity(unittest.TestCase):
         """set up method"""
         self.new_obj = City()
 
-
     def test_init_city(self):
         """ test instantiation of class """
         self.assertEqual(type(self.new_obj.id), str)

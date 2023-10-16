@@ -16,7 +16,6 @@ class TestPlace(unittest.TestCase):
         """set up method"""
         self.new_obj = Place()
 
-
     def test_init_place(self):
         """ test instantiation of class """
         self.assertEqual(type(self.new_obj.id), str)
@@ -29,9 +28,9 @@ class TestPlace(unittest.TestCase):
         self.new_obj.save()
         self.assertNotEqual(current_updatedAt, self.new_obj.updated_at)
 
-        """ test positional args """
+        """ test with args """
         with self.assertRaises(TypeError):
-            self.new_obj.save(13)
+            self.new_obj.save(10)
 
     def test_to_dict_place(self):
         """ test BaseModel.to_dict() """
@@ -46,7 +45,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(dict_['id']), str)
         self.assertEqual(type(dict_['created_at']), str)
 
-        """ test positional args """
+        """ test with args """
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
 
