@@ -42,7 +42,7 @@ class TestReview(unittest.TestCase):
         self.assertEqual(type(dict_['created_at']), str)
         """ test with args """
         with self.assertRaises(TypeError):
-            self.c.to_dict('str')
+            self.new_obj.to_dict('str')
 
     def test_moduleDocs(self):
         """

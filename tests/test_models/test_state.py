@@ -32,7 +32,7 @@ class TestState(unittest.TestCase):
 
     def test_to_dict_state(self):
         """ test State.to_dict() """
-        self.s.name = "bnb"
+        self.new_obj.name = "bnb"
         dict_ = self.new_obj.to_dict()
         self.assertEqual(type(dict_['name']), str)
         self.assertEqual(type(dict_['__class__']), str)

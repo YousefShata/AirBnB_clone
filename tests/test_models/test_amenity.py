@@ -24,7 +24,7 @@ class TestAmenity(unittest.TestCase):
 
     def test_save_amenity(self):
         """ test Amenity.save() """
-        current_updatedAt = self.c.updated_at
+        current_updatedAt = self.new_obj.updated_at
         self.new_obj.save()
         self.assertNotEqual(current_updatedAt, self.new_obj.updated_at)
 
