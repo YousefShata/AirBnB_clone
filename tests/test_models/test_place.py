@@ -7,7 +7,6 @@ from models.place import Place
 import models.base_model
 import models.place
 import datetime
-from time import sleep
 
 
 class TestPlace(unittest.TestCase):
@@ -36,15 +35,12 @@ class TestPlace(unittest.TestCase):
         """ test BaseModel.to_dict() """
         self.new_obj.name = "bnb"
         dict_ = self.new_obj.to_dict()
-
-        """ confirming the type of each attr in dict """
         self.assertEqual(type(dict_['name']), str)
         self.assertEqual(type(dict_['__class__']), str)
         self.assertEqual(dict_['__class__'], "Place")
         self.assertEqual(type(dict_['updated_at']), str)
         self.assertEqual(type(dict_['id']), str)
         self.assertEqual(type(dict_['created_at']), str)
-
         """ test with args """
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')

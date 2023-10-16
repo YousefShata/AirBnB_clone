@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""test cases for city class"""
+"""test city class"""
+
 import unittest
 from models.base_model import BaseModel
 from models.city import City
 import models.base_model
 import models.city
 import datetime
-from time import sleep
 
 
 class TestCity(unittest.TestCase):
@@ -35,15 +35,12 @@ class TestCity(unittest.TestCase):
         """ test City.to_dict() """
         self.new_obj.name = "bnb"
         dict_ = self.new_obj.to_dict()
-
-        """ confirming the type of each attr in dict """
         self.assertEqual(type(dict_['name']), str)
         self.assertEqual(type(dict_['__class__']), str)
         self.assertEqual(dict_['__class__'], "City")
         self.assertEqual(type(dict_['updated_at']), str)
         self.assertEqual(type(dict_['id']), str)
         self.assertEqual(type(dict_['created_at']), str)
-
         """ test with args """
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')

@@ -7,7 +7,6 @@ from models.amenity import Amenity
 import models.base_model
 import models.amenity
 import datetime
-from time import sleep
 
 
 class TestAmenity(unittest.TestCase):
@@ -37,15 +36,12 @@ class TestAmenity(unittest.TestCase):
         """ test Amenity.to_dict() """
         self.new_obj.name = "NYC"
         dict_ = self.new_obj.to_dict()
-
-        """ confirming the type of each attr in dict """
         self.assertEqual(type(dict_['name']), str)
         self.assertEqual(type(dict_['__class__']), str)
         self.assertEqual(dict_['__class__'], "Amenity")
         self.assertEqual(type(dict_['updated_at']), str)
         self.assertEqual(type(dict_['id']), str)
         self.assertEqual(type(dict_['created_at']), str)
-
         """ test with args """
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
