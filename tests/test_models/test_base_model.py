@@ -100,6 +100,20 @@ class TestBaseModel(unittest.TestCase):
                 .user.User.__doc__)
         self.assertGreater(len(classDoc), 0)
 
+      def test_save_updatedAt(self):
+        """test updating the public instance attribute updated_at
+            with the current datetime"""
+        new_inst = BaseModel()
+        sleep(0.05)
+        beforeSave_updated_at = new_inst.updated_at
+        new_inst.save()
+        self.assertNotEqual(beforeSave_updated_at, new_inst.updated_at)
+
+    def test_save_BaseModel(self):
+        """test if the save method works"""
+        self.new_odj.save()
+        self.assertNotEqual(self.new_odj.created_at, self.new_odj.updated_at)
+
 
 if __name__ == '__main__':
     unittest.main()
