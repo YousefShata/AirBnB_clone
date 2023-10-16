@@ -71,7 +71,7 @@ class TestUser(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
 
-     def test_moduleDocs(self):
+    def test_moduleDocs(self):
         """
         test moduleDoc
         """

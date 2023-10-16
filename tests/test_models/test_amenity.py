@@ -46,6 +46,24 @@ class TestAmenity(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
 
+    def test_moduleDocs(self):
+        """
+        test moduleDoc
+        """
+        moduleDoc = (
+                __import__("models.amenity")
+                .user.__doc__)
+        self.assertGreater(len(moduleDoc), 0)
+
+    def test_classDocs(self):
+        """
+        test class Doc
+        """
+        classDoc = (
+                __import__("models.amenity")
+                .user.User.__doc__)
+        self.assertGreater(len(classDoc), 0)
+
 
 if __name__ == '__main__':
     unittest.main()
