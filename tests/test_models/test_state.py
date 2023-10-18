@@ -44,6 +44,13 @@ class TestState(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
 
+    def test_name_Type(self):
+        """
+        test state attribute
+        """
+        state = State()
+        self.assertIs(type(state.name), str)
+
     def test_moduleDocs(self):
         """
         test moduleDoc

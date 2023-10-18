@@ -65,6 +65,15 @@ class TestBaseModel(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_odj.save(304)
 
+    def test_methodDocsSave(self):
+        """
+        test basemodel save again for some reason
+        """
+        methodDoc = (
+                __import__("models.base_model")
+                .base_model.BaseModel.save.__doc__)
+        self.assertGreater(len(methodDoc), 0)
+
     def test_to_dict(self):
         """test to_dict method"""
         self.new_odj.name = "bnb"

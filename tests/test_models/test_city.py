@@ -45,6 +45,14 @@ class TestCity(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
 
+    def test_data_Type(self):
+        """
+        test City data types
+        """
+        city = City()
+        self.assertIs(type(city.name), str)
+        self.assertIs(type(city.state_id), str)
+
     def test_moduleDocs(self):
         """
         test moduleDoc

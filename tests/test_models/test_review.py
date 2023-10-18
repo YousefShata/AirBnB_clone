@@ -44,6 +44,15 @@ class TestReview(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
 
+    def test_attributes_Type(self):
+        """
+        test attribute type
+        """
+        review = Review()
+        self.assertIs(type(review.text), str)
+        self.assertIs(type(review.place_id), str)
+        self.assertIs(type(review.user_id), str)
+
     def test_moduleDocs(self):
         """
         test moduleDoc

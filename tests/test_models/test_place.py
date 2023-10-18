@@ -44,6 +44,23 @@ class TestPlace(unittest.TestCase):
         """ test with args """
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
+    
+     def test_attributes_Type(self):
+        """
+        test place attribute
+        """
+        place = Place()
+        self.assertIs(type(place.name), str)
+        self.assertIs(type(place.city_id), str)
+        self.assertIs(type(place.user_id), str)
+        self.assertIs(type(place.description), str)
+        self.assertIs(type(place.number_rooms), int)
+        self.assertIs(type(place.number_bathrooms), int)
+        self.assertIs(type(place.max_guest), int)
+        self.assertIs(type(place.price_by_night), int)
+        self.assertIs(type(place.latitude), float)
+        self.assertIs(type(place.longitude), float)
+        self.assertIs(type(place.amenity_ids), list)
 
     def test_moduleDocs(self):
         """

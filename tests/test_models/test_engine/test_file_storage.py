@@ -67,6 +67,14 @@ class TestFileStorage(unittest.TestCase):
         dict_obj = FileStorage._FileStorage__objects
         self.assertIn(f"BaseModel." + base_.id, dict_obj)
 
+    def test_moduleDocs(self):
+        """
+        Test Filestorage doc 
+        """
+        moduleDoc = (
+                __import__("models.engine.file_storage")
+                .engine.file_storage.__doc__)
+        self.assertGreater(len(moduleDoc), 0)
 
 if __name__ == "__main__":
     unittest.main()
