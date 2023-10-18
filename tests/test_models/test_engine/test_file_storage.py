@@ -76,5 +76,23 @@ class TestFileStorage(unittest.TestCase):
                 .engine.file_storage.__doc__)
         self.assertGreater(len(moduleDoc), 0)
 
+     def test_classDocs(self):
+        """
+        test class doc
+        """
+        classDoc = (
+                __import__("models.engine.file_storage")
+                .engine.file_storage.FileStorage.__doc__)
+        self.assertGreater(len(classDoc), 0)
+
+    def test_methodDocsSave(self):
+        """
+        test method save
+        """
+        methodDoc = (
+                __import__("models.engine.file_storage")
+                .engine.file_storage.FileStorage.save.__doc__)
+        self.assertGreater(len(methodDoc), 0)
+
 if __name__ == "__main__":
     unittest.main()
