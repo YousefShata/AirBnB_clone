@@ -109,7 +109,7 @@ class TestBaseModel(unittest.TestCase):
                 .user.User.__doc__)
         self.assertGreater(len(classDoc), 0)
 
-      def test_save_updatedAt(self):
+    def test_save_updatedAt(self):
         """test updating the public instance attribute updated_at
             with the current datetime"""
         new_inst = BaseModel()

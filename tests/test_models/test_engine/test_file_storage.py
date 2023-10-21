@@ -76,7 +76,7 @@ class TestFileStorage(unittest.TestCase):
                 .engine.file_storage.__doc__)
         self.assertGreater(len(moduleDoc), 0)
 
-     def test_classDocs(self):
+    def test_classDocs(self):
         """
         test class doc
         """

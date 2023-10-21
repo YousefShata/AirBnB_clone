@@ -45,7 +45,7 @@ class TestPlace(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.new_obj.to_dict('str')
     
-     def test_attributes_Type(self):
+    def test_attributes_Type(self):
         """
         test place attribute
         """

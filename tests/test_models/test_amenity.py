@@ -55,7 +55,7 @@ class TestAmenity(unittest.TestCase):
                 .user.__doc__)
         self.assertGreater(len(moduleDoc), 0)
 
-     def test_name_Type(self):
+    def test_name_Type(self):
         """
         test class attribute
         """
